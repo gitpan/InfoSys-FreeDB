@@ -18,7 +18,7 @@ our %EXPORT_TAGS = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.91 $' =~ /\$Revision:\s+([^\s]+)/;
 
 # Exporter variable
 our @EXPORT = qw(

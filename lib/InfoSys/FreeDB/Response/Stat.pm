@@ -28,7 +28,7 @@ our $STAT_USERS_CUR_RX = '^\s*current\s+users\s*:\s*(\S+)';
 our $STAT_USERS_MAX_RX = '^\s*max\s+users\s*:\s*(\S+)';
 
 # Package version
-our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.91 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 
@@ -286,7 +286,7 @@ None known (yet.)
 =head1 HISTORY
 
 First development: September 2003
-Last update: October 2003
+Last update: December 2003
 
 =head1 AUTHOR
 
@@ -330,8 +330,6 @@ sub new_from_content_ref {
     my ($code) = $line =~ /^\s*(\d{3})\s/;
     defined ($code) ||
         throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Stat::new_from_content_ref, first line of specified \'content_ref\' does not contain a code.');
-    $code == 210 ||
-        throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Stat::new_from_content_ref, first line of specified \'content_ref\' does not contain a valid code.');
     my %opt;
     if ($code == 210) {
         pop(@content_ref);
@@ -382,7 +380,7 @@ sub new_from_content_ref {
         }
     }
     else {
-        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Stat::new_from_content_ref, unknown code '$code' returned.");
+        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Stat::new_from_content_ref, unknown code '$code' returned. Allowed code is 210.");
     }
 
     # Create a new object and return it

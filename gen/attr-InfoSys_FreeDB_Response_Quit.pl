@@ -43,8 +43,6 @@ EOF
     my ($code, $tail) = $line =~ /$CODE_RX/;
     defined ($code) ||
         throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Quit::new_from_content_ref, first line of specified \'content_ref\' does not contain a code.');
-    $code == 230 ||
-        throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Quit::new_from_content_ref, first line of specified \'content_ref\' does not contain a valid code.');
     my %opt;
     if ($code == 230) {
         my @tail = split(/\s+/, $tail);
@@ -55,7 +53,7 @@ EOF
         );
     }
     else {
-        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Quit::new_from_content_ref, unknown code '$code' returned.");
+        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Quit::new_from_content_ref, unknown code '$code' returned. Allowed code is 230.");
     }
 
     # Create a new object and return it

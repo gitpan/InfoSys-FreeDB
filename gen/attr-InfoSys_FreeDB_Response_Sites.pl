@@ -44,8 +44,6 @@ EOF
     my ($code) = $line =~ /^\s*(\d{3})\s+/;
     defined ($code) ||
         throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Sites::new_from_content_ref, first line of specified \'content_ref\' does not contain a code.');
-    $code == 210 || $code == 401 ||
-        throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Sites::new_from_content_ref, first line of specified \'content_ref\' does not contain a valid code.');
     my %opt;
     if ($code == 210) {
         pop(@content_ref);
@@ -90,7 +88,7 @@ EOF
         );
     }
     else {
-        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Sites::new_from_content_ref, unknown code '$code' returned.");
+        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Sites::new_from_content_ref, unknown code '$code' returned. Allowed codes are 210 and 401.");
     }
 
     # Create a new object and return it

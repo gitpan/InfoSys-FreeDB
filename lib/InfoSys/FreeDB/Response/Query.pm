@@ -26,7 +26,7 @@ our %ALLOW_VALUE = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.91 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 
@@ -285,7 +285,7 @@ None known (yet.)
 =head1 HISTORY
 
 First development: September 2003
-Last update: November 2003
+Last update: December 2003
 
 =head1 AUTHOR
 
@@ -329,8 +329,6 @@ sub new_from_content_ref {
     my ($code, $tail) = $line =~ /$CODE_RX/;
     defined ($code) ||
         throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Query::new_from_content_ref, first line of specified \'content_ref\' does not contain a code.');
-    $code == 200 || $code == 211 || $code == 202 || $code == 210 || $code == 403 || $code == 409 ||
-        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Query::new_from_content_ref, first line of specified 'content_ref' does not contain a valid code ($code).");
     my %opt;
     if ($code == 200) {
         my @tail = split(/\s+/, $tail, 3);
@@ -403,7 +401,7 @@ sub new_from_content_ref {
         );
     }
     else {
-        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Query::new_from_content_ref, unknown code '$code' returned.");
+        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Query::new_from_content_ref, unknown code '$code' returned. Allowed codes are 200, 210, 211, 202, 403 and 409.");
     }
 
     # Create a new object and return it

@@ -8,7 +8,7 @@ use AutoLoader qw(AUTOLOAD);
 use Error qw(:try);
 
 # Package version
-our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.91 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 
@@ -125,7 +125,7 @@ None known (yet.)
 =head1 HISTORY
 
 First development: September 2003
-Last update: October 2003
+Last update: December 2003
 
 =head1 AUTHOR
 
@@ -169,8 +169,6 @@ sub new_from_content_ref {
     my ($code) = $line =~ /^\s*(\d{3})\s+/;
     defined ($code) ||
         throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Hello::new_from_content_ref, first line of specified \'content_ref\' does not contain a code.');
-    $code == 200 || $code == 431 || $code == 431 ||
-        throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Hello::new_from_content_ref, first line of specified \'content_ref\' does not contain a valid code.');
     my %opt;
     if ($code == 200) {
         %opt = (
@@ -192,7 +190,7 @@ sub new_from_content_ref {
         );
     }
     else {
-        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Hello::new_from_content_ref, unknown code '$code' returned.");
+        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Hello::new_from_content_ref, unknown code '$code' returned. Allowed codes are 200, 402 and 431.");
     }
 
     # Create a new object and return it

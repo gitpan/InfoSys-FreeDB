@@ -1,5 +1,24 @@
 Revision history for Perl extension InfoSys::FreeDB.
 
+0.91 Tue Dec 16 22:24:30 CET 2003
+    - Thanks to David Byers for reporting most of these bugs.
+    - Chose a version number that is string-wise higher than 0.9.
+    - Corrected description in REDME file.
+    - Fixed discid format bug in InfoSys::FreeDB::Entry::mk_discid().
+    - Let InfoSys::FreeDB::Response::* classes report non-supported
+      codes returned by CDDB commands.
+    - Minor bug in InfoSys::FreeDB::Connection::CDDBP.
+    - Added support for code 210 on query in InfoSys::FreeDB::Connection.
+    - Added support for code 211 on read in InfoSys::FreeDB::Connection.
+    - For InfoSys::FreeDB::Connection::HTTP automatic maximal protocol
+      level detection is switched off for freedb_host "freedb.freedb.org"
+      because:.
+      1) HTTP is not connection oriented
+      2) "freedb.freedb.org" selects a random freedb server for each
+         request.
+      3) During software upgrade different servers may support different
+         maximal protocol levels which may lead to errors.
+
 0.12 Thu Nov 13 21:02:14 CET 2003
     - Fixed DISCID bug in InfoSys::FreeDB::Entry::write_array_ref.
       Thanks to Heikki Lindholm for reporting this.

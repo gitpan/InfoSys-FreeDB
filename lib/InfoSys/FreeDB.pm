@@ -8,7 +8,7 @@ use Error qw(:try);
 use Sys::Hostname;
 
 # Package version
-our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.91 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 

@@ -27,7 +27,7 @@ our %EXPORT_TAGS = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.91 $' =~ /\$Revision:\s+([^\s]+)/;
 
 # Exporter variable
 our @EXPORT = qw(
@@ -330,7 +330,7 @@ None known (yet.)
 =head1 HISTORY
 
 First development: September 2003
-Last update: October 2003
+Last update: December 2003
 
 =head1 AUTHOR
 
@@ -606,6 +606,7 @@ sub query {
     my $cmd = join( ' ', @cmd );
     my $content_ref = $self->_wait_command_reply($cmd, {
         200 => $FINAL_EOL_RX,
+        210 => $FINAL_EOL_RX,
         211 => $FINAL_DOT_RX,
         202 => $FINAL_EOL_RX,
         403 => $FINAL_EOL_RX,
@@ -637,6 +638,7 @@ sub read {
     my $cmd = join( ' ', @cmd );
     my $content_ref = $self->_wait_command_reply($cmd, {
         210 => $FINAL_DOT_RX,
+        211 => $FINAL_DOT_RX,
         401 => $FINAL_EOL_RX,
         402 => $FINAL_EOL_RX,
         403 => $FINAL_EOL_RX,

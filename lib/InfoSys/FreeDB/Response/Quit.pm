@@ -9,7 +9,7 @@ use Error qw(:try);
 use InfoSys::FreeDB::Response qw(:line_parse);
 
 # Package version
-our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.91 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 
@@ -144,7 +144,7 @@ None known (yet.)
 =head1 HISTORY
 
 First development: September 2003
-Last update: October 2003
+Last update: December 2003
 
 =head1 AUTHOR
 
@@ -188,8 +188,6 @@ sub new_from_content_ref {
     my ($code, $tail) = $line =~ /$CODE_RX/;
     defined ($code) ||
         throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Quit::new_from_content_ref, first line of specified \'content_ref\' does not contain a code.');
-    $code == 230 ||
-        throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Quit::new_from_content_ref, first line of specified \'content_ref\' does not contain a valid code.');
     my %opt;
     if ($code == 230) {
         my @tail = split(/\s+/, $tail);
@@ -200,7 +198,7 @@ sub new_from_content_ref {
         );
     }
     else {
-        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Quit::new_from_content_ref, unknown code '$code' returned.");
+        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Quit::new_from_content_ref, unknown code '$code' returned. Allowed code is 230.");
     }
 
     # Create a new object and return it

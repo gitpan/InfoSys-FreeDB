@@ -101,7 +101,7 @@ __SUPER_POD__
 
 =item SPEED-UP NOTE
 
-If protocol level C<1> is specified, the C<connect> method tries to use the highest available protocol level. To do so, it queries the FreeDB to find out exaclty which level is supported. On C<HTTP> connections this takes long. To speed up C<HTTP> connections specify a higher C<proto_level> -say C<5> before C<connect()> is called.
+If the C<freedb_host> isn't C<freedb.freedb.org> and protocol level C<1> is specified, the C<connect> method tries to use the highest available protocol level. To do so, it queries the FreeDB to find out exaclty which level is supported. On C<HTTP> connections this takes long. To speed up C<HTTP> connections specify a higher C<proto_level> -say C<5> before C<connect()> is called.
 
 =back
 EOF
@@ -125,6 +125,10 @@ EOF
 
     # Return if the protocol level is greater than 1
     ( $self->get_proto_level() > 1 ) &&
+        return(undef);
+
+    # Return if the freedb_host is "freedb.freedb.org"
+    ( $self->get_freedb_host() eq "freedb.freedb.org" ) &&
         return(undef);
 
     # Check the stat

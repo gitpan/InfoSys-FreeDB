@@ -7,7 +7,7 @@ use AutoLoader qw(AUTOLOAD);
 use Error qw(:try);
 
 # Package version
-our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.91 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 

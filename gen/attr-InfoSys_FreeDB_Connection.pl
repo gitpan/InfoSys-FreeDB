@@ -243,6 +243,7 @@ EOF
     my $cmd = join( ' ', @cmd );
     my $content_ref = $self->_wait_command_reply($cmd, {
         200 => $FINAL_EOL_RX,
+        210 => $FINAL_EOL_RX,
         211 => $FINAL_DOT_RX,
         202 => $FINAL_EOL_RX,
         403 => $FINAL_EOL_RX,
@@ -283,6 +284,7 @@ EOF
     my $cmd = join( ' ', @cmd );
     my $content_ref = $self->_wait_command_reply($cmd, {
         210 => $FINAL_DOT_RX,
+        211 => $FINAL_DOT_RX,
         401 => $FINAL_EOL_RX,
         402 => $FINAL_EOL_RX,
         403 => $FINAL_EOL_RX,

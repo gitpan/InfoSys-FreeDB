@@ -1,10 +1,10 @@
-InfoSys/FreeDB $Revision: 0.12 $
+InfoSys/FreeDB $Revision: 0.91 $
 ===============================
 
 SHORT DESCRIPTION
 
-The modules in InfoSys::FreeDB form an API to manage HollandHouse'
-UNISPOOL configuration files.
+The modules in InfoSys::FreeDB form an API to query FreeDB and CDDB
+databases.
 
 INSTALLATION
 

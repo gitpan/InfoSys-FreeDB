@@ -69,7 +69,7 @@ our %ALLOW_VALUE = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.91 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 
@@ -789,7 +789,7 @@ sub mk_discid {
 
     # Make ID out of sum, get_disc_length()-2 and the number of tracks.
     # And call set_discid().
-    $self->set_discid( sprintf("%8x",
+    $self->set_discid( sprintf("%08x",
         ( $sum % 0xff ) << 24 |
         int( $self->get_disc_length() - 2 ) << 8 |
         scalar( @track )

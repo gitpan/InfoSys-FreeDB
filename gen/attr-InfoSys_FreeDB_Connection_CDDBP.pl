@@ -92,7 +92,7 @@ EOF
 
     # Check if connection is defined
     defined( $self->get__connection_() ) ||
-        throw Error::Simple("ERROR: InfoSys::FreeDB::Connection::CDDBP::_wait_command_reply, not connected.");
+        throw Error::Simple("ERROR: InfoSys::FreeDB::Connection::CDDBP::_wait_write_reply, not connected.");
 
     # Set blocking
     $self->get__connection_->blocking(1);
@@ -107,7 +107,7 @@ EOF
     $head =~ s/^\s+//;
     my ($code) = $head =~ /(\d{3})/;
     exists($rx->{$code}) ||
-        throw Error::Simple("ERROR: InfoSys::FreeDB::Connection::CDDBP::_wait_command_reply, unknown code '$code' returned.");
+        throw Error::Simple("ERROR: InfoSys::FreeDB::Connection::CDDBP::_wait_write_reply, unknown code '$code' returned.");
 
     # Wait for the final DOT or EOL
     my $content .= $head;
