@@ -28,7 +28,7 @@ our $STAT_USERS_CUR_RX = '^\s*current\s+users\s*:\s*(\S+)';
 our $STAT_USERS_MAX_RX = '^\s*max\s+users\s*:\s*(\S+)';
 
 # Package version
-our ($VERSION) = '$Revision: 0.91 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.92 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 

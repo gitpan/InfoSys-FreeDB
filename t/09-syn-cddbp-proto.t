@@ -58,6 +58,8 @@ sub read_options {
         $line =~ s/\s+$//;
         $line =~ s/#.*$//;
         my ($attr, $val) = $line =~ /([^:]+):(.*)/;
+        if ( ! defined( $attr ) ) { $attr = '' }
+        if ( ! defined( $val ) ) { $val = '' }
         $attr =~ s/^\s+//; $attr =~ s/\s+$//;
         $val =~ s/^\s+//; $val =~ s/\s+$//;
         $attr ||

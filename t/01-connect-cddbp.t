@@ -90,7 +90,6 @@ sub test_cddbp {
         ok( 1, 'Command \'motd\'' ); $done++; $todo--;
 
         # 7) Proto
-        my $res;
         try {
             $res = $connection->proto();
         }
@@ -196,6 +195,8 @@ sub read_options {
         $line =~ s/\s+$//;
         $line =~ s/#.*$//;
         my ($attr, $val) = $line =~ /([^:]+):(.*)/;
+        if ( ! defined( $attr ) ) { $attr = '' }
+        if ( ! defined( $val ) ) { $val = '' }
         $attr =~ s/^\s+//; $attr =~ s/\s+$//;
         $val =~ s/^\s+//; $val =~ s/\s+$//;
         $attr ||

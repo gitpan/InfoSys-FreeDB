@@ -19,7 +19,7 @@ our $DID_RX = '^\s*DISCID\s*=\s*(\S+)\s*$';
 
 our $DL_ERR = '# Disc length: <length> seconds';
 
-our $DL_RX = '^\s*#\s*Disc\s+length\s*:\s*(\d+)\s+sec[ond]{0,3}s\s*$';
+our $DL_RX = '^\s*#\s*Disc\s+length\s*:\s*(\d+)';
 
 our $DTITLE_RX = '^\s*DTITLE\s*=(.*)$';
 
@@ -69,7 +69,7 @@ our %ALLOW_VALUE = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.91 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.92 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 
@@ -844,7 +844,10 @@ sub read_array_ref {
         $line_nr++;
         # Read the offset
         my ($offset) = $line =~ /$FO_RX/;
-        defined ($offset) || last;
+        if ( ! defined ($offset) ) {
+            unshift( @{$array}, $line );
+            last;
+        }
 
         # Put the offset in the correct track object
         $track++;
