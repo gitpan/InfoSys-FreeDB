@@ -1,10 +1,11 @@
 use strict;
 use 5.006;
+use File::Copy;
 use ExtUtils::MakeMaker;
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
 
-my ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
+my ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
 
 # Exe
 my @exe_links = qw(isfdmotd isfdoggenc isfdquery isfdrip isfdsites);
@@ -17,7 +18,7 @@ foreach my $exe ( @exe_links_PL ) {
 # Exe links
 foreach my $exe ( @exe_links ) {
     my $exe_PL = $exe . '.PL';
-    -f $exe_PL || symlink ('isfdlscat.PL', $exe_PL);
+    -f $exe_PL || copy('isfdlscat.PL', $exe_PL);
 }
 
 WriteMakefile(
@@ -27,6 +28,7 @@ WriteMakefile(
     PREREQ_PM => {
         'Error' => 0,
         'File::Compare' => 0,
+        'File::Copy' => 0,
         'File::Spec' => 0,
         'IO::File' => 0,
         'IO::Socket::INET' => 0,

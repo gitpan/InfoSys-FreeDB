@@ -462,7 +462,9 @@ EOF
     push(@array, "#");
 
     # DISCID
-    push( @array, "DISCID=" . ($self->get_discid() || '') );
+    $self->get_discid() ||
+        $self->mk_discid();
+    push( @array, "DISCID=" . ( $self->get_discid() ) );
 
     # DTITLE (Artist / Title)
     push( @array, &_str2db_lines( 'DTITLE=',
@@ -588,7 +590,7 @@ EOF
         {
             symbol_name => '$DL_RX',
             assignment => <<'EOF',
-'^\s*#\s*Disc\s+length\s*:\s*(\d+)\s+seconds\s*$';
+'^\s*#\s*Disc\s+length\s*:\s*(\d+)\s+sec[ond]{0,3}s\s*$';
 EOF
         },
         {

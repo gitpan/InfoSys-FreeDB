@@ -19,7 +19,7 @@ our $DID_RX = '^\s*DISCID\s*=\s*(\S+)\s*$';
 
 our $DL_ERR = '# Disc length: <length> seconds';
 
-our $DL_RX = '^\s*#\s*Disc\s+length\s*:\s*(\d+)\s+seconds\s*$';
+our $DL_RX = '^\s*#\s*Disc\s+length\s*:\s*(\d+)\s+sec[ond]{0,3}s\s*$';
 
 our $DTITLE_RX = '^\s*DTITLE\s*=(.*)$';
 
@@ -69,7 +69,7 @@ our %ALLOW_VALUE = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 
@@ -434,7 +434,7 @@ None known (yet.)
 =head1 HISTORY
 
 First development: September 2003
-Last update: October 2003
+Last update: November 2003
 
 =head1 AUTHOR
 
@@ -1196,7 +1196,9 @@ sub write_array_ref {
     push(@array, "#");
 
     # DISCID
-    push( @array, "DISCID=" . ($self->get_discid() || '') );
+    $self->get_discid() ||
+        $self->mk_discid();
+    push( @array, "DISCID=" . ( $self->get_discid() ) );
 
     # DTITLE (Artist / Title)
     push( @array, &_str2db_lines( 'DTITLE=',

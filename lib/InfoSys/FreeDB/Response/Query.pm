@@ -26,7 +26,7 @@ our %ALLOW_VALUE = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 
@@ -285,7 +285,7 @@ None known (yet.)
 =head1 HISTORY
 
 First development: September 2003
-Last update: October 2003
+Last update: November 2003
 
 =head1 AUTHOR
 
@@ -329,8 +329,8 @@ sub new_from_content_ref {
     my ($code, $tail) = $line =~ /$CODE_RX/;
     defined ($code) ||
         throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Query::new_from_content_ref, first line of specified \'content_ref\' does not contain a code.');
-    $code == 200 || $code == 211 || $code == 202 || $code == 403 || $code == 409 ||
-        throw Error::Simple ('ERROR: InfoSys::FreeDB::Response::Query::new_from_content_ref, first line of specified \'content_ref\' does not contain a valid code.');
+    $code == 200 || $code == 211 || $code == 202 || $code == 210 || $code == 403 || $code == 409 ||
+        throw Error::Simple ("ERROR: InfoSys::FreeDB::Response::Query::new_from_content_ref, first line of specified 'content_ref' does not contain a valid code ($code).");
     my %opt;
     if ($code == 200) {
         my @tail = split(/\s+/, $tail, 3);
@@ -344,6 +344,24 @@ sub new_from_content_ref {
                 discid => $tail[1],
                 dtitle => $tail[2],
             } ) ],
+        );
+    }
+    elsif ($code == 210) {
+        pop(@content_ref);
+        my @match = ();
+        foreach my $line (@content_ref) {
+            my @line = split(/\s+/, $line, 3);
+            require InfoSys::FreeDB::Match;
+            push(@match, InfoSys::FreeDB::Match->new( {
+                categ => $line[0],
+                discid => $line[1],
+                dtitle => $line[2],
+            } ) );
+        }
+        %opt = (
+            code => $code,
+            result => 'Found exact matches',
+            match => \@match,
         );
     }
     elsif ($code == 211) {

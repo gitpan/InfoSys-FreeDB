@@ -1,5 +1,16 @@
 Revision history for Perl extension InfoSys::FreeDB.
 
+0.12 Thu Nov 13 21:02:14 CET 2003
+    - Fixed DISCID bug in InfoSys::FreeDB::Entry::write_array_ref.
+      Thanks to Heikki Lindholm for reporting this.
+    - Fixed InfoSys::FreeDB::Response::Query::new_from_content_ref to
+      support code 210 which I overlooked during development.
+      Thanks again to Heikki Lindholm for reporting this.
+    - Allowed in InfoSys::FreeDB::Entry # Disc length: <length> secs
+      Thanks to Kevin J Walters for reporting this.
+    - Replaced symlink() with File::Copy::copy() in Makefile.PL to
+      make it a bit more Win32 friendly.
+
 0.11 Wed Oct 22 22:19:13 CEST 2003
     - Fixed pod bugs in isfdlscat.PL and gen/attr-InfoSys_FreeDB.pl
     - Switched on autoload

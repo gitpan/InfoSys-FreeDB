@@ -26,7 +26,7 @@ our %ALLOW_VALUE = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
 
 1;
 

@@ -19,7 +19,7 @@ use InfoSys::FreeDB::Entry;
 
 # Default options
 my $client_name_def = 'isfdcmds';
-my ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
+my ($VERSION) = '$Revision: 0.12 $' =~ /\$Revision:\s+([^\s]+)/;
 my $client_version_def = $VERSION;
 
 # Globals

@@ -1,4 +1,4 @@
-InfoSys/FreeDB $Revision: 0.11 $
+InfoSys/FreeDB $Revision: 0.12 $
 ===============================
 
 SHORT DESCRIPTION
@@ -21,6 +21,7 @@ This module requires these other modules and libraries:
 
   Error
   File::Compare
+  File::Copy
   File::Spec
   IO::File
   IO::Socket::INET
