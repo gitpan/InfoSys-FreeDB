@@ -8,7 +8,7 @@ use Error qw(:try);
 use InfoSys::FreeDB::Response qw(:line_parse);
 
 # Package version
-our ($VERSION) = '$Revision: 0.9 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.10 $' =~ /\$Revision:\s+([^\s]+)/;
 
 =head1 NAME
 

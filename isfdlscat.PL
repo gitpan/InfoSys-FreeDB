@@ -19,7 +19,7 @@ use InfoSys::FreeDB::Entry;
 
 # Default options
 my $client_name_def = 'isfdcmds';
-my ($VERSION) = '$Revision: 0.9 $' =~ /\$Revision:\s+([^\s]+)/;
+my ($VERSION) = '$Revision: 0.10 $' =~ /\$Revision:\s+([^\s]+)/;
 my $client_version_def = $VERSION;
 
 # Globals
@@ -89,6 +89,7 @@ foreach my $pair (
         ) {
     $opt{ $pair->[0] } = $pair->[1] if ( $pair->[1] );
 }
+&get_passwd();
 my $conn = $fact->create_connection( \%opt );
 
 # Switch application
@@ -127,7 +128,7 @@ if ($basename =~ /lscat/) {
     # Read entry
     my $entry;
     if ($i) {
-        $entry = InfoSys::FreeDB::Entry->new_from_file( $i );
+        $entry = InfoSys::FreeDB::Entry->new_from_fn( $i );
     } elsif ($dev) {
         $entry = InfoSys::FreeDB::Entry->new_from_cdparanoia( $dev );
     } else {
@@ -135,7 +136,6 @@ if ($basename =~ /lscat/) {
     }
 
     # Query
-    &get_passwd();
     my $res = $conn->query($entry);
     $res->is_error() &&
         die('Oops, error quering FreeDB/CDDB');
@@ -157,7 +157,7 @@ if ($basename =~ /lscat/) {
     # Read entry
     my $entry;
     if ($i) {
-        $entry = InfoSys::FreeDB::Entry->new_from_file( $i );
+        $entry = InfoSys::FreeDB::Entry->new_from_fn( $i );
     } else {
         my $entry_dev;
         if ($dev) {
@@ -167,7 +167,6 @@ if ($basename =~ /lscat/) {
         }
 
         # Query
-        &get_passwd();
         my $res = $conn->query($entry_dev);
         $res->is_error() &&
             die('Oops, error quering FreeDB/CDDB');
@@ -217,7 +216,7 @@ if ($basename =~ /lscat/) {
     # Read entry
     my $entry;
     if ($i) {
-        $entry = InfoSys::FreeDB::Entry->new_from_file( $i );
+        $entry = InfoSys::FreeDB::Entry->new_from_fn( $i );
     } else {
         my $entry_dev;
         if ($dev) {
@@ -227,7 +226,6 @@ if ($basename =~ /lscat/) {
         }
 
         # Query
-        &get_passwd();
         my $res = $conn->query($entry_dev);
         $res->is_error() &&
             die('Oops, error quering FreeDB/CDDB');
@@ -285,7 +283,7 @@ sub get_passwd {
         system('stty echo');
         print STDERR "\n";
         chomp($proxy_passwd);
-        $conn->setProxyPasswd($proxy_passwd);
+        $opt{proxy_passwd} = $proxy_passwd;
     }
 }
 
