@@ -15,40 +15,40 @@ push (@::bean_desc, {
         description => <<EOF,
 C<${pkg}> is the connection factory of the C<${pkg}> module hierarchy. This class creates connections using the protocols supported by FreeDB*.
 
-=over
+\=over
 
-=item (*)
+\=item (*)
 
 Currently CDDBP and HTTP protocols are supported.
 
-=back
+\=back
 EOF
         todo => <<EOF,
-=head2 Implement
+\=head2 Implement
 
-=over
+\=over
 
-=item log()
+\=item log()
 
-=item update()
+\=item update()
 
-=back
+\=back
 
-=head2 Test
+\=head2 Test
 
-=over
+\=over
 
-=item write()
+\=item write()
 
-=back
+\=back
 
-=head2 Analyse
+\=head2 Analyse
 
-=over
+\=over
 
-=item CDDBP through firewall
+\=item CDDBP through firewall
 
-=back
+\=back
 EOF
     },
     attr_opt => [
@@ -62,87 +62,87 @@ EOF
             description => <<EOF,
 Creates a C<${pkg_connection}> object. C<OPT_HASH_REF> is a hash reference used to pass connection creation options. On error an exception C<Error::Simple> is thrown.
 
-=over
+\=over
 
-=item SPEED-UP NOTE
+\=item SPEED-UP NOTE
 
 If protocol level C<1> is specified, the C<connect> method tries to use the highest available protocol level. To do so, it queries the FreeDB to find out exaclty which level is supported. On C<CDDBP> connections this doesn't take that long. On C<HTTP> connections it does. To speed up C<HTTP> connections specify a higher C<proto_level> -say C<5>.
 
-=back
+\=back
 
 Options for C<OPT_HASH_REF> may include:
 
-=over
+\=over
 
-=item B<C<auto_connected>>
+\=item B<C<auto_connected>>
 
 Connect the created object just after instantiation. Defaults to C<1>.
 
-=item B<C<client_host>>
+\=item B<C<client_host>>
 
 The hostname of the client. Defaults to C<&Sys::Hostname::hostname()>.
 
-=item B<C<client_name>>
+\=item B<C<client_name>>
 
 Mandatory option to name the connecting client software.
 
-=item B<C<client_user>>
+\=item B<C<client_user>>
 
 The user name of the client. Defaults to C<scalar( getpwuid(\$E<gt>) )>.
 
-=item B<C<client_version>>
+\=item B<C<client_version>>
 
 Mandatory option with the client software version string.
 
-=item B<C<freedb_cgi>>*
+\=item B<C<freedb_cgi>>*
 
 The FreeDB C<cgi> to use. Defaults to C<~cddb/cddb.cgi>.
 
-=item B<C<freedb_host>>
+\=item B<C<freedb_host>>
 
 The FreeDB host. Defaults to C<freedb.freedb.org>.
 
-=item B<C<freedb_port>>
+\=item B<C<freedb_port>>
 
 The port on the FreeDB host. Defaults to C<80> for C<HTTP> and to C<888> for C<CDDBP> connection types.
 
-=item B<C<protocol>>
+\=item B<C<protocol>>
 
 The protocol to use. Either C<HTTP> or C<CDDBP>. Defaults to C<HTTP>.
 
-=item B<C<proto_level>>
+\=item B<C<proto_level>>
 
 The FreeDB protocol level. Defaults to B<1>.
 
-=item B<C<proxy_host>>**
+\=item B<C<proxy_host>>**
 
 The proxy host to use.
 
-=item B<C<proxy_passwd>>**
+\=item B<C<proxy_passwd>>**
 
 The proxy password to use.
 
-=item B<C<proxy_port>>**
+\=item B<C<proxy_port>>**
 
 The port on the proxy host. Defaults to 8080.
 
-=item B<C<proxy_user>>**
+\=item B<C<proxy_user>>**
 
 The proxy user name to use.
 
-=back
+\=back
 
-=over
+\=over
 
-=item (*)
+\=item (*)
 
 Only supported for the HTTP protocol.
 
-=item (**)
+\=item (**)
 
 Proxy is only supported for the HTTP protocol.
 
-=back
+\=back
 
 EOF
             body => <<'EOF',

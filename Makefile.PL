@@ -4,7 +4,7 @@ use ExtUtils::MakeMaker;
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
 
-my ($VERSION) = '$Revision: 0.10 $' =~ /\$Revision:\s+([^\s]+)/;
+my ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
 
 # Exe
 my @exe_links = qw(isfdmotd isfdoggenc isfdquery isfdrip isfdsites);

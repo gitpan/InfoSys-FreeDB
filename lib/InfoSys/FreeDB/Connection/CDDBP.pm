@@ -4,6 +4,7 @@ use 5.006;
 use base qw( InfoSys::FreeDB::Connection );
 use strict;
 use warnings;
+use AutoLoader qw(AUTOLOAD);
 use Error qw(:try);
 use IO::Socket::INET;
 use InfoSys::FreeDB::Connection qw(:line_parse);
@@ -26,7 +27,11 @@ our %ALLOW_VALUE = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.10 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
+
+1;
+
+__END__
 
 =head1 NAME
 
@@ -751,4 +756,3 @@ sub write {
     ) );
 }
 
-1;

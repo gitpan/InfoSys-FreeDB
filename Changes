@@ -1,5 +1,12 @@
 Revision history for Perl extension InfoSys::FreeDB.
 
+0.11 Wed Oct 22 22:19:13 CEST 2003
+    - Fixed pod bugs in isfdlscat.PL and gen/attr-InfoSys_FreeDB.pl
+    - Switched on autoload
+
+0.10 Mon Oct  6 20:24:00 CEST 2003
+    - Fixed bugs in isfdlscat.PL
+
 0.9 Sun Oct  5 21:38:04 CEST 2003
     - First release
 

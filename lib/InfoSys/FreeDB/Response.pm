@@ -4,6 +4,7 @@ use 5.006;
 use base qw( Exporter );
 use strict;
 use warnings;
+use AutoLoader qw(AUTOLOAD);
 use Error qw(:try);
 require Exporter;
 
@@ -17,7 +18,7 @@ our %EXPORT_TAGS = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.10 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
 
 # Exporter variable
 our @EXPORT = qw(
@@ -27,6 +28,10 @@ our @EXPORT = qw(
 our @EXPORT_OK = qw(
     $CODE_RX
 );
+
+1;
+
+__END__
 
 =head1 NAME
 
@@ -273,4 +278,3 @@ sub set_result {
     $self->{InfoSys_FreeDB_Response}{result} = $val;
 }
 
-1;

@@ -4,6 +4,7 @@ use 5.006;
 use base qw( Exporter );
 use strict;
 use warnings;
+use AutoLoader qw(AUTOLOAD);
 use Error qw(:try);
 require Exporter;
 
@@ -26,7 +27,7 @@ our %EXPORT_TAGS = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.10 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
 
 # Exporter variable
 our @EXPORT = qw(
@@ -37,6 +38,10 @@ our @EXPORT_OK = qw(
     $FINAL_DOT_RX
     $FINAL_EOL_RX
 );
+
+1;
+
+__END__
 
 =head1 NAME
 
@@ -870,4 +875,3 @@ sub write {
     throw Error::Simple("ERROR: InfoSys::FreeDB::Connection::write, call this method in a subclass that has implemented it.");
 }
 
-1;

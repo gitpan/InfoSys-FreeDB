@@ -4,6 +4,7 @@ use 5.006;
 use base qw( InfoSys::FreeDB::Response );
 use strict;
 use warnings;
+use AutoLoader qw(AUTOLOAD);
 use Error qw(:try);
 use InfoSys::FreeDB::Response qw(:line_parse);
 
@@ -15,7 +16,11 @@ our %DEFAULT_VALUE = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.10 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
+
+1;
+
+__END__
 
 =head1 NAME
 
@@ -471,4 +476,3 @@ sub set_write_allowed {
     }
 }
 
-1;

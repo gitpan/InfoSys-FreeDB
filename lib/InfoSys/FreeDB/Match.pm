@@ -3,10 +3,15 @@ package InfoSys::FreeDB::Match;
 use 5.006;
 use strict;
 use warnings;
+use AutoLoader qw(AUTOLOAD);
 use Error qw(:try);
 
 # Package version
-our ($VERSION) = '$Revision: 0.10 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
+
+1;
+
+__END__
 
 =head1 NAME
 
@@ -254,4 +259,3 @@ sub set_dtitle {
     $self->{InfoSys_FreeDB_Match}{dtitle} = $val;
 }
 
-1;

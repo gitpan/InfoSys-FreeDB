@@ -3,6 +3,7 @@ package InfoSys::FreeDB::Entry;
 use 5.006;
 use strict;
 use warnings;
+use AutoLoader qw(AUTOLOAD);
 use Error qw(:try);
 use IO::File;
 
@@ -68,7 +69,11 @@ our %ALLOW_VALUE = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.10 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
+
+1;
+
+__END__
 
 =head1 NAME
 
@@ -1259,4 +1264,3 @@ sub write_fn {
     $self->write_fh($fh);
 }
 
-1;

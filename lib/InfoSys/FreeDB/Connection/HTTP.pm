@@ -4,6 +4,7 @@ use 5.006;
 use base qw( InfoSys::FreeDB::Connection );
 use strict;
 use warnings;
+use AutoLoader qw(AUTOLOAD);
 use Error qw(:try);
 use LWP::UserAgent;
 
@@ -13,7 +14,11 @@ our %DEFAULT_VALUE = (
 );
 
 # Package version
-our ($VERSION) = '$Revision: 0.10 $' =~ /\$Revision:\s+([^\s]+)/;
+our ($VERSION) = '$Revision: 0.11 $' =~ /\$Revision:\s+([^\s]+)/;
+
+1;
+
+__END__
 
 =head1 NAME
 
@@ -526,4 +531,3 @@ sub write {
     throw Error::Simple ("ERROR: InfoSys::FreeDB::Connection::HTTP::write, this method is not supported over 'HTTP'.");
 }
 
-1;

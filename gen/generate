@@ -41,7 +41,7 @@ foreach my $bean_desc (@::bean_desc) {
     $bean_desc->{bean_opt}{use_perl_version} = '5.006';
 
     # Disable autoloading for development
-    $bean_desc->{bean_opt}{autoloaded} = 0;
+    #$bean_desc->{bean_opt}{autoloaded} = 0;
 
     # Creat bean
     my $bean = PerlBean->new ($bean_desc->{bean_opt});
