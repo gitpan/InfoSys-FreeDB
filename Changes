@@ -1,0 +1,8 @@
+Revision history for Perl extension InfoSys::FreeDB.
+
+0.9 Sun Oct  5 21:38:04 CEST 2003
+    - First release
+
+Prior to version 0.9 there was Net::FreeDB2 0.8.2.6. All experience
+gained from that project is put in this one. The structure is copied
+almost 1 to 1 and a large part of the coding is restyled and reused.
